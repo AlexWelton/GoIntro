@@ -37,31 +37,41 @@ func getResponse(name string) string {
 	}
 }
 
-func greeting(name string) string {
+func isDesigner(name string) bool {
 	designers := [3]string{"Robert Greisemer", "Rob Pike", "Ken Thompson"}
-
-	greeting := "Hello, %s."
-
-	messageName := name
-
-	//Designers
 	for _, designer := range designers {
 		if name == designer {
-			greeting += " Thanks for creating me!"
+			return true
 		}
 	}
 
-	//Overlength
+	return false
+}
+
+func shortenName(name string) string {
+	return name[:20]
+}
+
+func getFirstName(name string) string {
+	subNames := strings.Fields(name)
+	return subNames[0]
+}
+
+func greeting(name string) string {
+	greeting := "Hello, %s."
+	var messageName string
+
 	if len(name) > 20 {
-		messageName = name[:20]
+		messageName = shortenName(name)
 		greeting += ".. Wow that name's too long for me!"
 	} else {
-		//Extract first name
-		subNames := strings.Fields(name)
-		messageName = subNames[0]
+		messageName = getFirstName(name)
 	}
 
-	//Palindrome
+	if isDesigner(name) {
+		greeting += " Thanks for creating me!"
+	}
+
 	if palindrome(name) {
 		greeting += " Cool, a palindromic name!"
 	}
