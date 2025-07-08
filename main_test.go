@@ -10,7 +10,7 @@ var greetingTests = []struct {
 	{"Bob", "Hello, Bob. Cool, a palindromic name!"},
 	{"Robert Greisemer", "Hello, Robert. Thanks for creating me!"},
 	{"Prince Rupert Grayson Robertson the Third", "Hello, Prince Rupert Grayso... Wow that name's too long for me!"},
-	{"A man a plan "},
+	{"A man a plan a canal panama", "Hello, A man a plan a canal... Wow that name's too long for me! Cool, a palindromic name!"},
 	{"Haskell Curry", "Hello, Haskell."},
 	{"Abi Iba", "Hello, Abi. Cool, a palindromic name!"},
 }

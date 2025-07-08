@@ -42,6 +42,8 @@ func greeting(name string) string {
 
 	greeting := "Hello, %s."
 
+	messageName := name
+
 	//Designers
 	for _, designer := range designers {
 		if name == designer {
@@ -49,20 +51,20 @@ func greeting(name string) string {
 		}
 	}
 
+	//Overlength
+	if len(name) > 20 {
+		messageName = name[:20]
+		greeting += ".. Wow that name's too long for me!"
+	} else {
+		//Extract first name
+		subNames := strings.Fields(name)
+		messageName = subNames[0]
+	}
+
 	//Palindrome
 	if palindrome(name) {
 		greeting += " Cool, a palindromic name!"
 	}
 
-	//Overlength
-	if len(name) > 20 {
-		name = name[:20]
-		greeting += ".. Wow that name's too long for me!"
-	} else {
-		//Extract first name
-		subNames := strings.Fields(name)
-		name = subNames[0]
-	}
-
-	return fmt.Sprintf(greeting, name)
+	return fmt.Sprintf(greeting, messageName)
 }
